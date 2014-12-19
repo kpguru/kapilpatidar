@@ -8,6 +8,12 @@ if (Meteor.isClient) {
     }
   });
   
+  Template.task.helpers({
+    is_admin: function(current_user_name){
+      return current_user_name == "kapil-guru"
+    }
+  });
+  
   Template.body.events({
     "submit .new-task": function (event) {
       // This function is called when the new task form is submitted

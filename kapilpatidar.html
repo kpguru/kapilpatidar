@@ -1,4 +1,3 @@
-<!-- simple-todos.html -->
 <head>
   <title>Todo List</title>
 </head>
@@ -8,7 +7,6 @@
     <header>
       <h1>Todo List</h1>
       {{> loginButtons}}
-      <!-- add a form below the h1 -->
       {{#if currentUser}}
         <form class="new-task">
           <input type="text" name="text" placeholder="Type to add new tasks" />
@@ -26,10 +24,12 @@
 
 <template name="task">
   <li class="{{#if checked}}checked{{/if}}">
-<!--
-    <button class="delete">&times;</button>
--->
-
+    {{#if currentUser}} 
+      {{#if is_admin currentUser.username}}
+        <button class="delete">&times;</button>
+      {{/if}}
+    {{/if}}
+    
     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
 
     <span class="text"><strong>{{username}}</strong> - {{text}}</span>
